@@ -1,0 +1,28 @@
+
+*{
+  background-color:#03334F;
+}
+.container-fluid{
+
+  color:white;
+  text-align:center;
+  align-content: center;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-right: 0;
+  border-left: 0;
+}
+span i{
+  margin:1em;
+  font-size:1em;
+  padding:1em;
+}
+.politicas{
+  color: #5A874B;
+
+}
+.politicas span{
+  margin-left:2em;
+  color: #5A874B;
+}

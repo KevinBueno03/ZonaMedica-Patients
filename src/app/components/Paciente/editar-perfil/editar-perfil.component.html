@@ -1,0 +1,94 @@
+<app-navbar-paciente></app-navbar-paciente>
+
+
+<!-- Main -->
+<div class="container">
+<div class="body row">
+<div class="main w-100">
+    <div class="card">
+
+    <h2>Datos personales</h2>
+        <div class="card-body container">
+            <form [formGroup]="reactiveForm">
+                <div class="row">
+                    <div class="col col-12">
+                        <div class="fotografia">
+                            <img src="../../../assets/img/profilePaciente.svg" alt="">
+                                <div class="ovrly"></div>
+                                <div class="buttons">
+                                  <mat-icon>photo_camera</mat-icon>
+                                </div>
+                        </div>
+                    </div>
+                  <div class="col col-6" style="margin-top: 5em;">
+                    <mat-form-field hintLabel="La contraseña debe tener 8 caracteres o más" class="example-full-width input" appearance="outline">
+                      <mat-label>Contraseña</mat-label>
+                      <input matInput placeholder="Escriba su contraseña" type="password" style="width: 29em;" formControlName="password" class="form-control" value=""
+                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" minlength="8">
+                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Escriba la contraseña</div>
+                        <div *ngIf="f.password.errors.minlength">La contraseña debe tener 8 caracteres o más.</div>
+                      </div>
+
+                    </mat-form-field>
+
+                  </div>
+                  <div class="col col-6" style="margin-top: 5em;">
+                    <mat-form-field class="example-full-width input" appearance="outline">
+                      <mat-label>Segundo Nombre</mat-label>
+                      <input matInput placeholder="Ingresa tu segundo nombre" formControlName="secondName"/>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width input" appearance="outline">
+                      <mat-label>Segundo Apellido</mat-label>
+                      <input matInput placeholder="Ingresa tu segundo apellido" type="text" name="secondLastName" formControlName="secondLastName"
+                      [ngClass]="{ 'is-invalid': submitted && f.secondLastName.errors }" required/><br>
+                      <div *ngIf="submitted && f.secondLastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.secondLastName.errors.required">Debe escribir el segundo apellido.</div>
+                      </div>
+
+                    </mat-form-field>
+
+
+                    <mat-form-field class="example-full-width input" appearance="outline">
+                      <mat-label>Correo Electrónico</mat-label>
+                      <input matInput type="email" placeholder="Ejem. sofia@gmail.com" formControlName="email" style="width: 28em;" class="form-control"
+                      [ngClass]="{ 'is-invalid':f.email.errors }" required/>
+                      <div *ngIf="f.email.errors" class="invalid-feedback">
+                        <mat-error *ngIf="f.email.errors.required">El correo no puede estar en blanco.</mat-error>
+                        <div *ngIf="f.email.errors.email">Ingrese un correo válido.</div>
+                      </div>
+
+                    </mat-form-field>
+<br>
+
+                    <mat-form-field class="input" appearance="outline">
+                      <mat-label>Departamento</mat-label>
+                      <select matNativeControl required formControlName="department">
+                        <option value="Francisco Morazan">Francisco Morazán</option>
+                        <option value="Olancho">Olancho</option>
+                        <option value="La Paz">La Paz</option>
+                      </select>
+                    </mat-form-field>
+
+
+                  </div>
+                </div>
+
+
+
+                <div class="col col-12 align-content-center">
+                  <button id="boton" mat-raised-button color="primary" style="width: 50%;"type="button" (click)="guardar()">
+                    <i style="vertical-align: middle;"> Guardar</i>
+                  </button>
+                </div>
+                <div class="col col-6 mr-auto" style="color: white; text-align: left !important; font-size: 3em">
+                  <a routerLink='/paciente/perfil'><h3><i class="fas fa-arrow-circle-left"></i> Atrás</h3></a>
+                </div>
+              </form>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>

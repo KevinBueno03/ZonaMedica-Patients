@@ -1,0 +1,41 @@
+.card{
+  min-height: 5rem;
+  cursor: pointer;
+  /* padding: 1rem;
+  margin: .5rem; */
+}
+/*
+.card .image{
+      width: 100%rem;
+      height: 15rem;
+      object-fit: cover;
+}
+*/
+.title{
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.sub-title{
+  font-size: .9rem;
+}
+
+.body{
+  font-size: .8rem;
+}
+
+.wrapper-text{
+  padding: .5rem;
+}
+
+
+.example-full-width {
+  width: 100%;
+}
+.col, .card{
+  padding:0 !important;
+  margin:0 !important;
+}
+.div{
+  display: inline !important;
+}

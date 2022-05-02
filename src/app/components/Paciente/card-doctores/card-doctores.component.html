@@ -1,0 +1,116 @@
+<div class="card" style="display:inline-flex;" >
+  <div class="w-100" style="width: 10em; height:17em!important; overflow: hidden;">
+    <img src="{{doctor?.img}}" class="img-fluid" alt="">
+  </div>
+
+  <div class="wrapper-text">
+    <div class="title" fxLayoutAlign="center center">{{doctor?.firstName}} {{doctor?.firstLastName}}
+      {{doctor?.secondLastName}}</div>
+    <div class="sub-title" fxLayoutAlign="center center">{{doctor?.master_degree}}</div>
+  </div>
+  <mat-card-actions fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" class="mr-2" (click)="openCita(cita)">Agendar Cita</button>
+    <button mat-raised-button color="accent" (click)="openPerfil(perfil)">Ver Perfil</button>
+  </mat-card-actions>
+  <br>
+</div>
+
+
+<!--MODALES-->
+<ng-template #cita let-c="close" let-d="dismiss" style="z-index: 1000;">
+  <div class="modal-header" style="justify-content: center; align-items: center;">
+    <h4 class="modal-title" id="modal-basic-title" style="justify-content: center; align-items: center;"><strong>Agendar
+        Cita Medica</strong></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3>Tu cita será agendada con:<strong> {{doctor?.firstName}} {{doctor?.firstLastName}} </strong></h3>
+    <form [formGroup]="agendarCita" class="example-form">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Escoja la fecha</mat-label>
+        <input matInput placeholder="Ingrese la fecha de la cita" formControlName="date" min="fecha"
+          [value]="fecha" type="date">
+      </mat-form-field>
+      <br>
+      <mat-label>Escoja la hora de su cita</mat-label>
+      <ngb-timepicker [(ngModel)]="time" [ngModelOptions]="{standalone: true}" [seconds]="false" [hourStep]="hourStep"
+        [minuteStep]="minuteStep" [meridian]="true"></ngb-timepicker>
+      <br>
+      <!--
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Escoja la hora</mat-label>
+      <input matInput placeholder="Ingrese la hora de la cita" type="time">
+    </mat-form-field>
+  -->
+
+      <br>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Exponer Situacion Médica</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col col-6">
+          <label id="example-radio-group-label">Escoja su tipo de Cita</label><br>
+          <input type="checkbox" formControlName="medAppointment_modality_inHouse" name="test" [checked]="tipoCita === check_box_type.inHouse"
+            (click)="selectCheckBoxTipoCita(check_box_type.inHouse)"> En Domicilio
+
+          <br>
+
+          <input type="checkbox" formControlName="medAppointment_modality_inClinic" name="test" [checked]="tipoCita === check_box_type.inClinic"
+            (click)="selectCheckBoxTipoCita(check_box_type.inClinic)"> Clinica
+            <br>
+            <input type="checkbox" formControlName="medAppointment_modality_online" name="test" [checked]="tipoCita === check_box_type.online"
+            (click)="selectCheckBoxTipoCita(check_box_type.online)"> En línea
+            <br>
+
+        </div>
+
+        <div class="col col-6">
+          <label id="example-radio-group-label">Escoja su tipo de Pago</label><br>
+          <input type="checkbox" formControlName="payment_cash" name="test" [checked]="tipoPago === check_box_type.cash"
+            (click)="selectCheckBoxTipoPago(check_box_type.cash)"> Efectivo
+
+          <br>
+
+          <input type="checkbox" formControlName="payment_digital" name="test" [checked]="tipoPago === check_box_type.platform"
+            (click)="selectCheckBoxTipoPago(check_box_type.platform)"> Plataforma
+            <br>
+        </div>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" (click)="agendarCitaMedica()">Agendar Cita</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+
+<ng-template #perfil let-c="close" let-d="dismiss"  style="z-index: 1000;">
+  <div class="modal-header" style="justify-content: center; align-items: center;" fxLayoutAlign="center center">
+    <h2 class="modal-title" id="modal-basic-title"><strong>Perfil Medico</strong></h2>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" fxLayoutAlign="center center">
+    <div class="card" *ngFor="let datos of datosDoctor">
+      <img appImagenRota src="{{datos?.data?.img}}" class="image" alt="">
+      <div class="wrapper-text">
+        <div class="title" fxLayoutAlign="center center">{{datos?.data?.firstName}} {{datos?.data?.firstLastName}}
+          {{datos?.data?.secondLastName}}</div><br>
+          <div class="body" fxLayoutAlign="center center">Biografía: {{datos?.data?.bibliography}}</div>
+        <div class="sub-title" fxLayoutAlign="center center">Especialidad: {{datos?.data?.master_degree}}</div>
+        <div class="body" fxLayoutAlign="center center">Reside en: {{datos?.data?.department}}</div>
+
+      </div>
+      <br>
+    </div>
+  </div>
+</ng-template>

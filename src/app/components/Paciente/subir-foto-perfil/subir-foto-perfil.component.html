@@ -1,0 +1,31 @@
+<app-navbar-paciente></app-navbar-paciente>
+<div fxLayoutAlign="center center" class="mt-3">
+  <span>
+    <h1 fxLayoutAlign="center center"><strong>Establecer Foto de Perfil</strong></h1>
+    <h4>Espacio para establecer la foto de perfil que será visible para tu perfil y tu médico.</h4>
+  </span>
+</div>
+<br>
+
+<!--- DEFINIER COMPONENTE DE FILE-->
+<div class="wrapper">
+  <div class="position-relative">
+    <h4 fxLayoutAlign="center center">Presione la imagen para subir una foto...</h4>
+      <input class="input-file" (change)="capturarFile($event)" type="file" accept="image/*">
+      <div class="preview-img" *ngIf="previsualizacion">
+          <button class="clear-image" type="button" (click)="clearImage()">Eliminar</button>
+          <img  [src]="previsualizacion" alt="" style="width: 400px;">
+      </div>
+
+      <div class="p-1">
+        <small><strong>Solo se aceptan imágenes de tipo .png</strong></small>
+      </div>
+      <div class="wrapper-button" *ngIf="previsualizacion">
+          <button type="button" class="button" [disabled]="loading" (click)="subirArchivo()">
+              {{(loading) ? 'Cargando.....' : 'Subir Imagen'}}
+          </button>
+      </div>
+
+  </div>
+
+</div>

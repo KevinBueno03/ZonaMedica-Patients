@@ -1,0 +1,44 @@
+.fondo{
+  background: linear-gradient(180deg, #EEF5FB 0%, #BFD9F0 100%);
+}
+
+
+.bd-example{
+  padding:10em;
+}
+img{
+  width:35%;
+  margin:0 !important;
+}
+h2,p {
+  width:100% !important;
+  float:right !important;
+  margin-top: 1em;
+}
+
+h2{
+  font-style: normal;
+  font-weight: 3em;
+  font-size: 3em;
+  line-height: 2em;
+  text-transform: capitalize;
+
+  color: #0A97FC;
+
+}
+p{
+  font-style: normal;
+  font-weight: 1em;
+  font-size: 2em;
+  line-height: 44px;
+  text-align: justify;
+  letter-spacing: -0.02em;
+  margin-bottom: 3em;
+  color: #000000;
+
+}
+@media (max-width: 600px){
+  .dont-show{
+    display: none !important;
+  }
+}

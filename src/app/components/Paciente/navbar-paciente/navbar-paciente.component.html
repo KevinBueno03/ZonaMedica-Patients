@@ -1,0 +1,173 @@
+<!--ULTIMA PRUEBA UGH.-->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom" style="width: 100%; margin: 0;">
+  <div class="container-fluid">
+    <a class="navbar-brand" ><span><img src="../assets/img/up (9).svg" style="width:50px; height: 50px;" routerLink="/zonamedica/usuario/inicio"></span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ml-auto" id="navbarText" style="float: right; margin-right:0; align-items: right; text-align: right;" *ngFor="let link of pacientesData">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" >
+            <button mat-button class="menu-buttons" routerLink="/zonamedica/pacientes/inicio">
+              <mat-icon class="iconos">home</mat-icon>
+              <span>Inicio</span>
+            </button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >
+            <button mat-button class="menu-buttons" routerLink="/zonamedica/pacientes/calendario">
+              <mat-icon class="iconos">event</mat-icon>
+              <span>Calendario</span>
+            </button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >
+            <button mat-button class="menu-buttons" routerLink="/zonamedica/pacientes/lista-doctores">
+              <mat-icon class="iconos">medication</mat-icon>
+              <span>Doctores</span>
+            </button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >
+            <button mat-button class="menu-buttons">
+              <mat-icon class="iconos">help</mat-icon>
+              <span>Ayuda</span>
+            </button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >
+
+
+              <mat-list-item [matMenuTriggerFor]="menus">
+                <button mat-button class="menu-buttons">
+                  <mat-icon class="iconos">arrow_drop_down</mat-icon>
+                  <span>{{link.firstName}} {{link.firstLastName}}</span>
+                </button>
+              </mat-list-item>
+              <mat-menu #menus="matMenu">
+                <button mat-button class="menu-buttons" routerLink="/zonamedica/pacientes/subir-foto-perfil">
+                  <mat-icon class="iconos">camera</mat-icon>
+                  <span>Subir Foto Perfil</span>
+                </button><br>
+                <button mat-button class="menu-buttons" routerLink="/zonamedica/pacientes/subir-archivo">
+                  <mat-icon class="iconos">upload</mat-icon>
+                  <span>Subir Archivo</span>
+                </button><br>
+                <button mat-button class="menu-buttons" routerLink="/zonamedica/pacientes/perfil">
+                  <mat-icon class="iconos">person</mat-icon>
+                  <span>Ver Perfil</span>
+                </button><br>
+                <button mat-button (click)="open(restablecerContra)" class="menu-buttons">
+                  <mat-icon class="iconos">lock</mat-icon>
+                  <span>Cambiar Contraseña</span>
+                </button><br>
+                <button mat-button (click)="logoutPaciente()" class="menu-buttons">
+                  <mat-icon class="iconos">logout</mat-icon>
+                  <span>Cerrar Sesion</span>
+                </button>
+
+              </mat-menu>
+          </a>
+        </li>
+      </ul>
+      <a routerLink="/zonamedica/pacientes/perfil">
+        <img *ngIf="!link.img" src="../../../../assets/img/profilePaciente.svg" style="width:40px; height:40px; border-color: black; border-width: 2px; border-radius: 50%;">
+        <img *ngIf="link.img" src="{{link.img}}" style="width:40px; height:40px; border-color: black; border-width: 2px; border-radius: 50%;">
+      </a>
+    </div>
+  </div>
+</nav>
+<!--
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <span><img src="../assets/img/up (9).svg" style="width:50px; height: 50px;" routerLink="/paciente/inicio-usuario"></span>
+   <div class="spacer"></div>
+   <button mat-button class="menu-buttons" routerLink="/paciente/inicio-usuario">
+    <mat-icon class="iconos">home</mat-icon>
+    <span>Inicio</span>
+  </button>
+  <button mat-button class="menu-buttons" routerLink="/paciente/calendario-usuario">
+    <mat-icon class="iconos">event</mat-icon>
+    <span>Calendario</span>
+  </button>
+  <mat-list-item [matMenuTriggerFor]="menu">
+    <button mat-button class="menu-buttons">
+      <mat-icon class="iconos">arrow_drop_down</mat-icon>
+      <span>Categorias</span>
+    </button>
+  </mat-list-item>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item class="menu-buttons">Medicina General</button>
+    <button mat-menu-item class="menu-buttons">Odontologia</button>
+    <button mat-menu-item class="menu-buttons">Laboratorio</button>
+    <button mat-menu-item class="menu-buttons">Especialidades</button>
+    <button mat-menu-item class="menu-buttons">Nutrición</button>
+  </mat-menu>
+  <button mat-button class="menu-buttons" routerLink="/paciente/doctores">
+    <mat-icon class="iconos">medication</mat-icon>
+    <span>Doctores</span>
+  </button>
+  <button mat-button class="menu-buttons">
+    <mat-icon class="iconos">help</mat-icon>
+    <span>Ayuda</span>
+  </button>
+  <a href="/paciente/inicio-usuario"><img src="../../../assets/img/profilePaciente.svg" style="width:40px; height:40px; border-color: black; border-width: 2px; border-radius: 50%;"></a>
+  <mat-list-item [matMenuTriggerFor]="menus" *ngFor="let link of pacientesData">
+    <button mat-button class="menu-buttons">
+      <mat-icon class="iconos">arrow_drop_down</mat-icon>
+      <span>{{link.firstName}} {{link.firstLastName}}</span>
+    </button>
+  </mat-list-item>
+  <mat-menu #menus="matMenu">
+    <button mat-button class="menu-buttons" routerLink="/paciente/perfil">
+      <mat-icon class="iconos">person</mat-icon>
+      <span>Ver Perfil</span>
+    </button><br>
+    <button mat-button (click)="open(restablecerContra)" class="menu-buttons">
+      <mat-icon class="iconos">lock</mat-icon>
+      <span>Cambiar Contraseña</span>
+    </button><br>
+    <button mat-button (click)="logoutPaciente()" class="menu-buttons">
+      <mat-icon class="iconos">logout</mat-icon>
+      <span>Cerrar Sesion</span>
+    </button>
+  </mat-menu>
+  <a mat-button routerLink="/">Sofia Videa</a>
+
+</mat-toolbar>
+-->
+
+<!--MODAL RECUPERAR CONTRASEÑA-->
+<ng-template #restablecerContra let-c="close" let-d="dismiss">
+  <div class="modal-header" style="justify-content: center; align-items: center;">
+    <h4 class="modal-title" id="modal-basic-title"><strong>Cambiar Contraseña</strong></h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="recuperarContra" class="example-form">
+    <mat-form-field class="example-full-width" appearance="outline" style="width: 34em;">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput type="email" placeholder="Ejem. sofia@gmail.com" formControlName="emailRecu" style="width: 24em;"
+        class="form-control" [ngClass]="{ 'is-invalid':recuContra.emailRecu.errors }" required />
+      <div *ngIf="recuContra.emailRecu.errors" class="invalid-feedback">
+        <mat-error *ngIf="recuContra.emailRecu.errors.required">El correo no puede estar en blanco.
+        </mat-error>
+
+        <div *ngIf="recuContra.emailRecu.errors.email">Ingrese un correo válido.</div>
+      </div>
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+    <br>
+  </form>
+  </div>
+  <div class="modal-footer">
+    <button mat-raised-button class="close" (click)="d('Cross click')">Cerrar</button>
+    <button mat-raised-button color="primary" (click)="recupContra()" [disabled]=recuperarContra.invalid>Reestablecer Contraseña</button>
+  </div>
+</ng-template>

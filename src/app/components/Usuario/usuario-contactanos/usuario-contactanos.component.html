@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container-fluid fondo">
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  style="text-align: center;">
+      <div  style="text-align: center; display: table-cell;">
+        <h2 >
+          Ponte en contacto
+        </h2>
+      </div>
+    </div>
+      <div class="col col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+              <h4>Contáctanos</h4>
+
+              <form [formGroup]="formContactanos">
+                <mat-form-field class="example-full-width input" appearance="outline">
+                  <mat-label>Nombre Completo</mat-label>
+                  <input matInput placeholder="Ingrese su nombre" type="text" name="name"
+                    formControlName="name"
+                    [ngClass]="{ 'is-invalid': formDoctor['name'].errors }" required>
+                  <div *ngIf="formDoctor['name'].errors" class="invalid-feedback">
+                    <div *ngIf="formDoctor['name'].errors['required']">Debe escribir su nombre.</div>
+                  </div>
+                  <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width input" appearance="outline">
+                  <mat-label>Correo Electrónico</mat-label>
+                  <input matInput type="email" placeholder="Ejem. sofia@gmail.com" formControlName="email" style="width: 30em;" class="form-control input"
+                  [ngClass]="{ 'is-invalid':formDoctor['email'].errors }" required/>
+                  <div *ngIf="formDoctor['email'].errors" class="invalid-feedback">
+                    <div *ngIf="formDoctor['email'].errors['required']">El correo no puede estar en blanco.</div>
+                    <!--<div *ngIf="f['email'].errors.required">Escriba un email Electrónico</div>-->
+                    <div *ngIf="formDoctor['email'].errors['email']">Ingrese un correo válido.</div>
+                  </div>
+                  <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="example-full-width input">
+                  <mat-label>Escriba Su mensaje</mat-label>
+                  <textarea matInput placeholder="Escriba su mensaje" formControlName="message"></textarea>
+                </mat-form-field>
+
+              <button mat-raised-button style="margin-top: 10px; margin-right: 5px; width: 15em;" color="primary" type="button" [disabled]=formContactanos.invalid (click)="enviarCorreo()">
+                <mat-icon>send</mat-icon>Enviar Mensaje
+              </button>
+            </form>
+      </div>
+
+      <div class="col col-12 col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.306134113171!2d-86.23126618626092!3d12.091182436857618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f73ffb326492ab1%3A0x4b9184c085f78af8!2s3%20Ent.%20a%20las%20Colinas%2C%20Managua%2C%20Nicaragua!5e0!3m2!1sen!2shn!4v1634127759462!5m2!1sen!2shn" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <!--<img src="../assets/img/image 1.png" class="w-100">-->
+        <div class="w-100 bloque">
+          <p>
+            Col Las Colinas, tercera entrada, casa N° 3212, Tegucigalpa, M.D.C. Francisco
+            Morazán, Honduras C.A.
+          </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-usuario-footer></app-usuario-footer>

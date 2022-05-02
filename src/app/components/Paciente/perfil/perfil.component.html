@@ -1,0 +1,79 @@
+<app-navbar-paciente></app-navbar-paciente>
+
+
+<!-- Main -->
+<div class="container">
+<div class="body row">
+<div class="main w-100">
+  <span>
+    <h1 fxLayoutAlign="center center" style="font-size: x-large;"><strong>Datos Personales</strong></h1>
+  </span>
+    <div class="card">
+        <div class="card-body" *ngFor="let link of pacientesData">
+            <button type="button" data-bs-placement="top" title="Editar perfil" (click)="actualizarPerfil()" mat-button class="menu-buttons ml-auto" style="margin-right: 0;" >
+              Solicitar Actualizar Perfil
+            </button>
+
+            <div class="fotografia">
+              <img *ngIf="!link.img" class="perfil" src="../../../../assets/img/profilePaciente.svg" alt="" title="Imagen de Perfil"><br>
+              <img *ngIf="link.img" class="perfil" src="{{link.img}}" alt="" title="Imagen de Perfil"><br>
+          </div>
+          <div class="container" style="margin:0; padding:0; margin-top:2em" >
+            <div class="row" style="margin:0; padding-left:0.2em; padding-right: 0.2em; ">
+              <div class="col col-4 col-sm-4 col-xs-4 col-md-4 col-lg-2 col-xl-2" style="font-size:0.5em; font-weight: bold; margin:0; padding:0">
+                <p>
+                  Nombre completo:
+                </p>
+
+              </div>
+              <div class="col col-8 col-sm-8 col-xs-8 col-md-8 col-lg-10 col-xl-10" style="font-size:0.5em; margin:0; padding:0; text-align: center;">
+                <p>
+                  {{ link.firstName }} {{ link.firstLastName}} {{ link.secondLastName}}
+                </p>
+
+              </div>
+              <hr>
+            </div>
+            <div class="row" style="margin:0; padding:0.2em">
+              <div class="col col-4 col-sm-4 col-xs-4 col-md-4 col-lg-2 col-xl-2" style="font-size:0.5em; font-weight: bold; margin:0; padding:0">
+                <p>
+                  Identidad:
+                </p>
+              </div>
+              <div class="col col-8 col-sm-8 col-xs-8 col-md-8 col-lg-10 col-xl-10" style="font-size:0.5em; margin:0; padding:0;text-align: center;">
+                <p>
+                  {{ link.hn_id}}
+                </p>
+              </div>
+              <hr>
+            </div>
+
+            <div class="row" style="margin:0; padding:0.2em">
+              <div class="col col-4 col-sm-4 col-xs-4 col-md-4 col-lg-2 col-xl-2" style="font-size:0.5em; font-weight: bold; margin:0; padding:0">
+                <p>
+                  Correo Electrónico:
+                </p>
+              </div>
+              <div class="col col-8 col-sm-8 col-xs-8 col-md-8 col-lg-10 col-xl-10" style="font-size:0.5em; margin:0; padding:0;text-align: center;">
+                <p>
+                  {{ link.email}}
+                </p>
+
+              </div>
+              <hr>
+            </div>
+
+            <div class="row" style="margin:0; padding:0.2em">
+              <div class="col col-4 col-sm-4 col-xs-4 col-md-4 col-lg-2 col-xl-2" style="font-size:0.5em; font-weight: bold; margin:0; padding:0">
+                <p>
+                  Departamento:
+                </p>
+              </div>
+              <div class="col col-8 col-sm-8 col-xs-8 col-md-8 col-lg-10 col-xl-10" style="font-size:0.5em; margin:0; padding:0;text-align: center;">
+                <p>
+                  {{ link.department}}
+                </p>
+              </div>
+
+            </div>
+          </div>
