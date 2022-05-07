@@ -46,7 +46,7 @@ recupContra(){
 }
 
 logoutPaciente(){
-  this._router.navigateByUrl('/user/login-user');
+  this._router.navigateByUrl('/zonamedica/usuario/inicio');
   this.pacienteService.logoutPaciente();
 }
 

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-inicio-usuario',
@@ -10,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./inicio-usuario.component.css']
 })
 export class InicioUsuarioComponent implements OnInit {
-
+  private doctorUrl: string = environment.baseDoctorUrl;
   closeResult = '';
   formLogin: FormGroup;
   recuperarContra: FormGroup;
@@ -26,7 +28,12 @@ export class InicioUsuarioComponent implements OnInit {
   hide=true;
   hideC=true;
 
-  constructor(private formBuilder: FormBuilder, private _router: Router, private pacienteService: PacienteService) {
+
+  ngOnInit(): void {
+  }
+
+
+  constructor(private formBuilder: FormBuilder, private _router: Router,  private modalService: NgbModal, private pacienteService: PacienteService) {
     this.reactiveForm = this.formBuilder.group({
       firstName: new FormControl('', Validators.required),
       firstLastName: new FormControl('', Validators.required),
@@ -59,11 +66,6 @@ export class InicioUsuarioComponent implements OnInit {
     }); */
 
   }
-
-
-  ngOnInit(): void {
-  }
-
 
   //Inicio Funciones Login Logout Paciente
 
@@ -98,7 +100,7 @@ export class InicioUsuarioComponent implements OnInit {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
 
-      if (matchingControl.errors && !matchingControl.errors['mustMatch']) {
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
         return;
       } if (control.value !== matchingControl.value) {
         matchingControl.setErrors({ mustMatch: true });
@@ -161,14 +163,39 @@ export class InicioUsuarioComponent implements OnInit {
   }
 
 
+  //INICIO FUNCIONES PARA MODALES
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
   enviarPaciente(){
-    this._router.navigate(['/user/registrar-paciente']);
+    this._router.navigate(['/zonamedica/pacientes/registrarse']);
+    this.modalService.dismissAll();
   }
 
   enviarDoctor(){
-    this._router.navigate(['/user/registrar-doctor']);
+    window.location.href = this.doctorUrl+'/#/doctor/register';
+    this.modalService.dismissAll();
   }
 
+  loginDoctor(){
+    window.location.href = this.doctorUrl+'/#/doctor/login';
+  }
   //FIN MODALES
 
   //INICIO ALERTAS
@@ -198,6 +225,5 @@ export class InicioUsuarioComponent implements OnInit {
   }
 
 
-  //FIN ALERTAS
 
 }

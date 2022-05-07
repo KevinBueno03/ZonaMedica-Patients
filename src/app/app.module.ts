@@ -31,6 +31,7 @@ import { PacienteService } from './services/paciente.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { PacienteInicioComponent } from './components/Paciente/paciente-inicio/paciente-inicio.component';
+import { UsuarioRegistrarPacienteComponent } from './components/Usuario/usuario-registrar-paciente/usuario-registrar-paciente.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -50,6 +51,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UsuarioFooterComponent,
     UsuarioFuncionalidadesComponent,
     UsuarioFuncionalidadesPageComponent,
+    UsuarioRegistrarPacienteComponent,
     NavbarComponent,
     CalendarioComponent,
     CardDoctoresComponent,
@@ -61,7 +63,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     RegistroPacienteComponent,
     InicioUsuarioComponent,
     NavbarPacienteComponent,
-    PacienteInicioComponent
+    PacienteInicioComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ import { InicioUsuarioComponent } from './components/Usuario/inicio-usuario/inic
 import { UsuarioAcercaDeNosotrosPageComponent } from './components/Usuario/usuario-acerca-de-nosotros-page/usuario-acerca-de-nosotros-page.component';
 import { UsuarioContactanosComponent } from './components/Usuario/usuario-contactanos/usuario-contactanos.component';
 import { UsuarioFuncionalidadesPageComponent } from './components/Usuario/usuario-funcionalidades-page/usuario-funcionalidades-page.component';
+import { UsuarioRegistrarPacienteComponent } from './components/Usuario/usuario-registrar-paciente/usuario-registrar-paciente.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
       {path: 'calendario', component: CalendarioComponent},
       {path: 'editar-perfil', component: EditarPerfilComponent},
       {path: 'subir-archivo', component: SubirArchivoComponent},
-      {path: 'subir-foto-perfil', component: SubirFotoPerfilComponent}
+      {path: 'subir-foto-perfil', component: SubirFotoPerfilComponent},
+      {path: 'registrarse', component: UsuarioRegistrarPacienteComponent},
       ]
     },
     {path: 'usuario', children:[
